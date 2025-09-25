@@ -1,16 +1,74 @@
 ﻿<Window x:Class="Terminplaner.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:terminplaner="clr-namespace:Terminplaner"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid HorizontalAlignment="Center"  Width="200" Height="40">
-            <Button Click="createAppointment" Background="Aqua">Add Appointment</Button>
+        Title="Terminplaner" Height="520" Width="1000" Background="White">
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="420" />
+            <ColumnDefinition Width="12" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Eigener Kalender -->
+        <Grid x:Name="CustomCalendar" Grid.Column="0" Background="White" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Monatsanzeige + Buttons -->
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="7" Orientation="Horizontal" HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button x:Name="PrevMonthButton" Content="&lt;" Width="40" Height="40" Margin="0,0,16,0" FontSize="20" />
+                <TextBlock x:Name="MonthYearHeader" Text="Monat • Jahr" FontSize="28" FontWeight="Bold"
+                           VerticalAlignment="Center" />
+                <Button x:Name="NextMonthButton" Content="&gt;" Width="40" Height="40" Margin="16,0,0,0" FontSize="20" />
+            </StackPanel>
+
+            <!-- Kopfzeile: Wochentage -->
+            <TextBlock Text="So" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Mo" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Di" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Mi" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Do" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Fr" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Sa" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
 
+        <!-- Trennlinie -->
+        <Border Grid.Column="1" Background="#E0E0E0" Width="2" Margin="8" />
+
+        <!-- Rechte Spalte -->
+        <StackPanel Grid.Column="2" Margin="24,8,8,8" Orientation="Vertical" VerticalAlignment="Top">
+            <TextBlock x:Name="SelectedDateHeader" Text="Loading..." FontSize="36" FontWeight="Bold" Margin="0,6,0,12" VerticalAlignment="Center"/>
+            <ListBox x:Name="AppointmentListBox" Margin="0,16,0,0" FontSize="18"/>
+        </StackPanel>
+
+        <!-- Button zum Erstellen von Terminen -->
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center"
+                    Margin="0,12,0,0">
+            <Button x:Name="CreateAppointmentButton" Content="Termin erstellen" Width="180" Height="40" FontSize="18" />
+        </StackPanel>
     </Grid>
 </Window>
-
