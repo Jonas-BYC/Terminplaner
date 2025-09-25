@@ -1,0 +1,38 @@
+﻿<Page x:Class="Terminplaner.AppointmentCreator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Terminplaner"
+      mc:Ignorable="d"
+      Title="AppointmentCreator" Height="450" Width="800">
+    <Grid>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Width="200" Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="←" Click="PreviousDate_Click"
+                    Background="Gray" Foreground="White" FontSize="16" BorderThickness="0"/>
+
+            <Button Grid.Column="1" x:Name="DateDisplayButton" Click="DateDisplay_Click"
+                    Background="Gray" Foreground="White" FontSize="16" BorderThickness="0"/>
+
+            <Button Grid.Column="2" Content="→" Click="NextDate_Click"
+                    Background="Gray" Foreground="White" FontSize="16" BorderThickness="0"/>
+        </Grid>
+
+        <DatePicker x:Name="DatePickerControl"
+                    SelectedDateChanged="DatePickerControl_SelectedDateChanged"
+                    Visibility="Collapsed"
+                    DisplayDateEnd="2100-12-31"
+                    DisplayDateStart="2000-01-01"
+                    Margin="0,70,0,0"
+                    HorizontalAlignment="Center"/>
+        <Grid>
+            <TextBlock Text="What is this shit" Background="BlueViolet" Margin="0,0,0,100" Width="200" Height="40"/>
+        </Grid>
+    </Grid>
+</Page>
