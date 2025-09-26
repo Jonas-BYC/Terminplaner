@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Terminplaner.repository;
 
 namespace Terminplaner
 {
@@ -12,7 +13,7 @@ namespace Terminplaner
         private void UpdateAppointmentList()
         {
             AppointmentListBox.Items.Clear();
-            var appointments = Terminplaner.repository.AppointmentRepository.GetAppointmentsByDate(DateOnly.FromDateTime(currentDate));
+            var appointments = AppointmentRepository.GetAppointmentsByDate(DateOnly.FromDateTime(currentDate));
             foreach (var appt in appointments)
             {
                 AppointmentListBox.Items.Add($"{appt.name} \t {appt.startTime:hh\\:mm} - {appt.endTime:hh\\:mm}");
